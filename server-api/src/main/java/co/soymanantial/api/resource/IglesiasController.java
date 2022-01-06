@@ -14,43 +14,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.soymanantial.api.model.Emisoras;
-import co.soymanantial.api.model.User;
-import co.soymanantial.api.repository.EmisorasRepository;
+import co.soymanantial.api.model.Iglesias;
+import co.soymanantial.api.repository.IglesiasRepository;
 
 @RestController
 @CrossOrigin ("*")
-@RequestMapping(value="/apiscrv/emisoras/")
-public class EmisorasController {
+@RequestMapping(value="/apiscrv/iglesias/")
+public class IglesiasController {
 	
 	// Creo un objeto del tipo respositorio para trae los metodos
 	
 	@Autowired
-	EmisorasRepository repositorio;
+	IglesiasRepository repositorio;
 
-	// Metodo post para emisoras
-	@PostMapping("addEmisora")
-	public String agregarEmisora (@RequestBody Emisoras emisora) {
-		repositorio.save(emisora);
-		return "Se ha agregado una emisora exitosamente";
+	// Metodo post para Iglesias
+	@PostMapping("addIglesia")
+	public String agregarIglesias (@RequestBody Iglesias iglesia) {
+		repositorio.save(iglesia);
+		return "Se ha agregado una iglesia exitosamente";
 	}
 	
-	@GetMapping("listEmisoras")
-	public List<Emisoras> listarEmisoras(){
+	@GetMapping("listIglesias")
+	public List<Iglesias> listarIglesias(){
 		return repositorio.findAll();
 	}
 	
-	@GetMapping("/deleteEmisora/{id}")
-	public ResponseEntity<Emisoras> borrarEmisora(@PathVariable int id) {
-		Optional<Emisoras> delEmisora = repositorio.findById(id);
-		System.out.print(delEmisora);
-		if (delEmisora.isPresent()) {
+	@GetMapping("/deleteIglesia/{id}")
+	public ResponseEntity<Iglesias> borrarIglesia(@PathVariable int id) {
+		Optional<Iglesias> delIglesia = repositorio.findById(id);
+		System.out.print(delIglesia);
+		if (delIglesia.isPresent()) {
 			repositorio.deleteById(id);
 			
 		}else {
-			return new ResponseEntity<Emisoras>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<Iglesias>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity<Emisoras>(HttpStatus.OK);
+		return new ResponseEntity<Iglesias>(HttpStatus.OK);
 		
 	}
 
