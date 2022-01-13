@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.soymanantial.api.model.Emisoras;
-import co.soymanantial.api.model.User;
 import co.soymanantial.api.repository.EmisorasRepository;
 
 @RestController
